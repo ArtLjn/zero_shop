@@ -2,10 +2,10 @@
 
 ## 模块划分
 
-| 子项目名 | 项目路径                                      |
-|------|-------------------------------------------|
-| 商品服务 | [/kratos-blog/app/blog](./app/blog)       |
-| 订单服务 | [/kratos-blog/app/comment](./app/comment) |
-| 用户服务 | [/kratos-blog/app/user](./app/user)       |
-| 支付服务 | [/kratos-blog/app/gateway](./app/gateway) |
-| 统一网关 | [/kratos-blog/app/gateway](./app/gateway) |
+| 子项目名 | 项目路径                                |
+|------|-------------------------------------|
+| 商品服务 | [/app/blog](./app/goods)            |
+| 订单服务 | [/app/order](./app/order)           |
+| 用户服务 | [/app/user](./app/user)             |
+| 支付服务 | [/app/payment](./app/payment)       |
+| 统一网关 | [/app/gateway](./app/gateway) |
