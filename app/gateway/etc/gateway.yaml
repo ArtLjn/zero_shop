@@ -1,0 +1,19 @@
+Name: gateway-example # gateway name
+Host: localhost # gateway host
+Port: 8888 # gateway port
+Upstreams: # upstreams
+  - Grpc:
+      Etcd:
+        Hosts:
+          - 127.0.0.1:2379
+        Key: user.rpc
+#    # protoset mode
+#    ProtoSets:
+#      - proto/user.pb
+    Mappings:
+      - Method: post
+        Path: /ping
+        RpcPath: user.User/Ping
+  - Grpc:
+      Endpoints:
+        - localhost:8080

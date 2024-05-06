@@ -4,13 +4,64 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f667fc0-7ca9-4caa-954e-f80530f970c7" name="更改" comment="">
+    <list default="true" id="7f667fc0-7ca9-4caa-954e-f80530f970c7" name="更改" comment="update .gitignore">
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo1/gateway/gateway.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo1/hello.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo2/gateway/etc/gateway.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo2/gateway/gateway.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo2/hello.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/gateway/etc/gateway.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/gateway/etc/hello.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/gateway/gateway.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/hello.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/etc/hello.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/hello.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/hello/hello.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/hello/hello_grpc.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/helloclient/hello.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/internal/config/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/internal/logic/pinglogic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/internal/server/helloserver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/name.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/user.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/etc/gateway-api.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/gateway.api" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/gateway.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/internal/config/config.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/internal/handler/gatewayhandler.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/internal/handler/routes.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/internal/logic/gatewaylogic.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/internal/svc/servicecontext.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/test_gateway/demo3/server/internal/svc/servicecontext.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gateway/internal/types/types.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/order/etc/order.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/order/etc/order.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/order/internal/logic/pinglogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/order/internal/logic/pinglogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/order/order.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/order/order.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/order/order.proto" beforeDir="false" afterPath="$PROJECT_DIR$/app/order/order.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/etc/user.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/etc/user.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/internal/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/internal/logic/pinglogic.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/internal/logic/pinglogic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/internal/server/userserver.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/internal/server/userserver.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/user.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/user/user.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/user/user_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/user/user_grpc.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/userclient/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/userclient/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" url="file:///opt/homebrew/opt/go/libexec" />
   <component name="Git.Settings">
@@ -29,6 +80,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Go 构建.go build zero_shop/app/gateway.executor": "Run",
+    "Go 构建.go build zero_shop/app/order.executor": "Run",
+    "Go 构建.go build zero_shop/app/test_gateway/demo2/gateway.executor": "Run",
+    "Go 构建.go build zero_shop/app/test_gateway/demo2/server.executor": "Run",
+    "Go 构建.go build zero_shop/app/test_gateway/demo3/gateway.executor": "Run",
+    "Go 构建.go build zero_shop/app/test_gateway/demo3/server.executor": "Run",
+    "Go 构建.go build zero_shop/app/test_gateway/gateway.executor": "Run",
+    "Go 构建.go build zero_shop/app/test_gateway/server.executor": "Run",
+    "Go 构建.go build zero_shop/app/user.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
@@ -37,7 +98,7 @@
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "git-widget-placeholder": "master",
     "go.import.settings.migrated": "true",
-    "last_opened_file_path": "/Users/ljn",
+    "last_opened_file_path": "/Users/ljn/Documents/Language/Go/zero_demo/zero_shop/app/test_gateway/demo3",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -45,23 +106,77 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/test_gateway/demo3" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/test_gateway/demo1" />
+      <recent name="$PROJECT_DIR$/app/test_gateway/gateway/etc" />
+      <recent name="$PROJECT_DIR$/app/gateway/etc" />
+      <recent name="$PROJECT_DIR$/app/gateway/proto" />
+      <recent name="$PROJECT_DIR$/app/gateway" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="go build zero_shop/app/order" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="GoApplicationRunConfiguration" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Go 构建.go build zero_shop/app/test_gateway/demo3/gateway">
+    <configuration name="go build zero_shop/app/test_gateway/demo2/gateway" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="zero_shop" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="zero_shop/app/order" />
+      <package value="zero_shop/app/test_gateway/demo2/gateway" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/app/order/order.go" />
+      <filePath value="$PROJECT_DIR$/app/test_gateway/demo2/gateway/gateway.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build zero_shop/app/test_gateway/demo2/server" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zero_shop" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="zero_shop/app/test_gateway/demo2/server" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/app/test_gateway/demo2/server/hello.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build zero_shop/app/test_gateway/demo3/gateway" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zero_shop" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="zero_shop/app/test_gateway/demo3/gateway" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/app/test_gateway/demo3/gateway/gateway.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build zero_shop/app/test_gateway/demo3/server" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zero_shop" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="zero_shop/app/test_gateway/demo3/server" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/app/test_gateway/demo3/server/hello.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build zero_shop/app/test_gateway/gateway" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zero_shop" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="zero_shop/app/test_gateway/gateway" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/app/test_gateway/gateway/gateway.go" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go 构建.go build zero_shop/app/order" />
+        <item itemvalue="Go 构建.go build zero_shop/app/test_gateway/demo3/gateway" />
+        <item itemvalue="Go 构建.go build zero_shop/app/test_gateway/demo3/server" />
+        <item itemvalue="Go 构建.go build zero_shop/app/test_gateway/demo2/gateway" />
+        <item itemvalue="Go 构建.go build zero_shop/app/test_gateway/demo2/server" />
+        <item itemvalue="Go 构建.go build zero_shop/app/test_gateway/gateway" />
       </list>
     </recent_temporary>
   </component>
@@ -76,7 +191,22 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="update .gitignore" />
+  </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/app/user/pb/user/user.pb.go</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

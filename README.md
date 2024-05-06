@@ -9,3 +9,10 @@
 | 用户服务 | [/app/user](./app/user)             |
 | 支付服务 | [/app/payment](./app/payment)       |
 | 统一网关 | [/app/gateway](./app/gateway) |
+
+## 技术栈
+- RabbitMq
+- redis
+- mongo
+- mysql
+- jwt

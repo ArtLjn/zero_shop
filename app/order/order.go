@@ -7,6 +7,7 @@ import (
 	"zero_shop/app/order/internal/server"
 	"zero_shop/app/order/internal/svc"
 	"zero_shop/app/order/order"
+	"zero_shop/pkg"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"
@@ -15,7 +16,7 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-var configFile = flag.String("f", "etc/order.yaml", "the config file")
+var configFile = flag.String("f", pkg.OrderConfigPath, "the config file")
 
 func main() {
 	flag.Parse()
