@@ -5,10 +5,10 @@ package server
 
 import (
 	"context"
-	"zero_shop/app/user/user"
 
 	"zero_shop/app/user/internal/logic"
 	"zero_shop/app/user/internal/svc"
+	"zero_shop/app/user/user"
 )
 
 type UserServer struct {
@@ -22,12 +22,17 @@ func NewUserServer(svcCtx *svc.ServiceContext) *UserServer {
 	}
 }
 
-func (s *UserServer) Ping(ctx context.Context, in *user.Request) (*user.Response, error) {
-	l := logic.NewPingLogic(ctx, s.svcCtx)
-	return l.Ping(in)
-}
-
 func (s *UserServer) Login(ctx context.Context, in *user.LoginRequest) (*user.LoginResponse, error) {
 	l := logic.NewLoginLogic(ctx, s.svcCtx)
 	return l.Login(in)
+}
+
+func (s *UserServer) Register(ctx context.Context, in *user.RegisterRequest) (*user.RegisterResponse, error) {
+	l := logic.NewRegisterLogic(ctx, s.svcCtx)
+	return l.Register(in)
+}
+
+func (s *UserServer) SendEmail(ctx context.Context, in *user.SendEmailRequest) (*user.SendEmailResponse, error) {
+	l := logic.NewSendEmailLogic(ctx, s.svcCtx)
+	return l.SendEmail(in)
 }

@@ -3,14 +3,6 @@ syntax = "proto3";
 package user;
 option go_package="./user";
 
-message Request {
-  string ping = 1;
-}
-
-message Response {
-  string pong = 1;
-}
-
 message LoginRequest {
   string username = 1;
   string password = 2;
@@ -21,7 +13,29 @@ message LoginResponse {
   repeated string data = 3;
 }
 
+message RegisterRequest {
+  string phone = 1;
+  string username = 2;
+  string password = 3;
+  string email = 4;
+  string emailCode = 5;
+}
+message RegisterResponse {
+  int64 code = 1;
+  string msg = 2;
+}
+
+message SendEmailRequest {
+  string email = 1;
+}
+message SendEmailResponse {
+  int64 code = 1;
+  string msg = 2;
+  string data = 3;
+}
+
 service User {
-  rpc Ping(Request) returns(Response);
   rpc Login(LoginRequest) returns(LoginResponse);
+  rpc Register(RegisterRequest) returns(RegisterResponse);
+  rpc SendEmail(SendEmailRequest) returns(SendEmailResponse);
 }

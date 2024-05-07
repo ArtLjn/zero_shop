@@ -7,6 +7,7 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
+	"zero_shop/app/user/user"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
@@ -26,6 +27,7 @@ type (
 		FindOne(ctx context.Context, id int64) (*User, error)
 		Update(ctx context.Context, data *User) error
 		Delete(ctx context.Context, id int64) error
+		GetUser(ctx context.Context, data *user.LoginRequest) *User
 	}
 
 	defaultUserModel struct {
@@ -34,9 +36,14 @@ type (
 	}
 
 	User struct {
-		Id       int64          `db:"id"`
-		Username sql.NullString `db:"username"`
-		Password sql.NullString `db:"password"`
+		Id       int64          `db:"id"`       // 自增ID
+		Username sql.NullString `db:"username"` // 用户名称
+		Password sql.NullString `db:"password"` // 密码
+		RoleId   int64          `db:"role_id"`  // 角色
+		Phone    sql.NullString `db:"phone"`    // 手机号
+		Email    sql.NullString `db:"email"`    // 电子邮箱
+		UserId   sql.NullString `db:"user_id"`  // 用户唯一ID
+		Sex      sql.NullString `db:"sex"`      // 性别
 	}
 )
 
@@ -79,6 +86,19 @@ func (m *defaultUserModel) Update(ctx context.Context, data *User) error {
 	return err
 }
 
+func (m *defaultUserModel) GetUser(ctx context.Context, data *user.LoginRequest) *User {
+	query := fmt.Sprintf("select %s from %s where `username` = ? and `password` = ? limit 1", userRows, m.table)
+	var resp User
+	err := m.conn.QueryRowCtx(ctx, &resp, query, data.Username, data.Password)
+	switch err {
+	case nil:
+		return &resp
+	case sqlx.ErrNotFound:
+		return nil
+	default:
+		return nil
+	}
+}
 func (m *defaultUserModel) tableName() string {
 	return m.table
 }

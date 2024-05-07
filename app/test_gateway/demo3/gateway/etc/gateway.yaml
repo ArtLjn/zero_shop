@@ -3,7 +3,10 @@ Host: localhost
 Port: 8888
 Upstreams:
   - Grpc:
-      Target: 0.0.0.0:8080
+      Etcd:
+        Hosts:
+          - localhost:2379
+        Key: hello.rpc
     # protoset mode
     ProtoSets:
       - app/test_gateway/demo3/gateway/etc/hello.pb

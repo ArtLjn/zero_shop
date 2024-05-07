@@ -9,4 +9,15 @@ type Config struct {
 	DB struct {
 		DataSource string
 	}
+	Email struct {
+		Username string
+		Password string
+		Port     int
+		Host     string
+	}
+	RDB struct {
+		Addr     string
+		DB       int
+		Password string
+	}
 }

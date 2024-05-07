@@ -7,13 +7,20 @@ Upstreams: # upstreams
         Hosts:
           - 127.0.0.1:2379
         Key: user.rpc
-#    # protoset mode
-#    ProtoSets:
-#      - proto/user.pb
+    ProtoSets:
+      - app/gateway/etc/proto/user.pb
     Mappings:
       - Method: post
         Path: /ping
         RpcPath: user.User/Ping
   - Grpc:
-      Endpoints:
-        - localhost:8080
+      Etcd:
+        Hosts:
+          - 127.0.0.1:2379
+        Key: order.rpc
+    ProtoSets:
+      - app/gateway/etc/proto/order.pb
+    Mappings:
+      - Method: post
+        Path: /orderPing
+        RpcPath: order.Order/Ping
