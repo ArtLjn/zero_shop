@@ -3,14 +3,12 @@ package logic
 import (
 	"context"
 	"fmt"
+	"github.com/zeromicro/go-zero/core/logx"
 	"gopkg.in/gomail.v2"
 	"math/rand"
 	"time"
 	"zero_shop/app/user/internal/svc"
 	"zero_shop/app/user/user"
-	"zero_shop/pkg"
-
-	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type SendEmailLogic struct {
@@ -28,11 +26,11 @@ func NewSendEmailLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SendEma
 }
 
 func (l *SendEmailLogic) SendEmail(in *user.SendEmailRequest) (*user.SendEmailResponse, error) {
-	if err := pkg.CheckFieldsNoEmpty(in); err != nil {
+	if in.Email == "" {
 		return &user.SendEmailResponse{
 			Code: 400,
-			Msg:  err.Error(),
-		}, err
+			Msg:  "email is empty",
+		}, nil
 	}
 	m := gomail.NewMessage()
 	cf := l.svcCtx.Config.Email

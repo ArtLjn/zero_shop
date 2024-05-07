@@ -31,7 +31,6 @@ message SendEmailRequest {
 message SendEmailResponse {
   int64 code = 1;
   string msg = 2;
-  string data = 3;
 }
 
 service User {

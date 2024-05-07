@@ -5,12 +5,14 @@ import (
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 	"zero_shop/app/user/internal/config"
 	"zero_shop/app/user/model"
+	"zero_shop/pkg"
 )
 
 type ServiceContext struct {
 	Config config.Config
 	Uc     model.UserModel
 	Rdb    *redis.Client
+	Tool   pkg.HuToolUtils
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -18,6 +20,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		Config: c,
 		Uc:     model.NewUserModel(sqlx.NewMysql(c.DB.DataSource)),
 		Rdb:    NewRDB(c),
+		Tool:   pkg.NewBeanUtils(),
 	}
 }
 

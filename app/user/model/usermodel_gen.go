@@ -28,6 +28,7 @@ type (
 		Update(ctx context.Context, data *User) error
 		Delete(ctx context.Context, id int64) error
 		GetUser(ctx context.Context, data *user.LoginRequest) *User
+		GetUserCond(ctx context.Context, key, val interface{}) *User
 	}
 
 	defaultUserModel struct {
@@ -36,14 +37,14 @@ type (
 	}
 
 	User struct {
-		Id       int64          `db:"id"`       // 自增ID
-		Username sql.NullString `db:"username"` // 用户名称
-		Password sql.NullString `db:"password"` // 密码
-		RoleId   int64          `db:"role_id"`  // 角色
-		Phone    sql.NullString `db:"phone"`    // 手机号
-		Email    sql.NullString `db:"email"`    // 电子邮箱
-		UserId   sql.NullString `db:"user_id"`  // 用户唯一ID
-		Sex      sql.NullString `db:"sex"`      // 性别
+		Id       int64  `db:"id"`       // 自增ID
+		Username string `db:"username"` // 用户名称
+		Password string `db:"password"` // 密码
+		RoleId   int64  `db:"role_id"`  // 角色
+		Phone    string `db:"phone"`    // 手机号
+		Email    string `db:"email"`    // 电子邮箱
+		UserId   string `db:"user_id"`  // 用户唯一ID
+		Sex      string `db:"sex"`      // 性别
 	}
 )
 
@@ -75,8 +76,9 @@ func (m *defaultUserModel) FindOne(ctx context.Context, id int64) (*User, error)
 }
 
 func (m *defaultUserModel) Insert(ctx context.Context, data *User) (sql.Result, error) {
-	query := fmt.Sprintf("insert into %s (%s) values (?, ?)", m.table, userRowsExpectAutoSet)
-	ret, err := m.conn.ExecCtx(ctx, query, data.Username, data.Password)
+	query := fmt.Sprintf("insert into %s (%s) values (?, ?,?,?,?,?,?)", m.table, userRowsExpectAutoSet)
+	fmt.Println(query)
+	ret, err := m.conn.ExecCtx(ctx, query, data.Username, data.Password, data.RoleId, data.Phone, data.Email, data.UserId, data.Sex)
 	return ret, err
 }
 
@@ -99,6 +101,21 @@ func (m *defaultUserModel) GetUser(ctx context.Context, data *user.LoginRequest)
 		return nil
 	}
 }
+
+func (m *defaultUserModel) GetUserCond(ctx context.Context, key, val interface{}) *User {
+	query := fmt.Sprintf("select %s from %s where `%s` = ? limit 1", userRows, m.table, key)
+	var resp User
+	err := m.conn.QueryRowCtx(ctx, &resp, query, val)
+	switch err {
+	case nil:
+		return &resp
+	case sqlx.ErrNotFound:
+		return nil
+	default:
+		return nil
+	}
+}
+
 func (m *defaultUserModel) tableName() string {
 	return m.table
 }

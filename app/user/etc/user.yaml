@@ -5,10 +5,10 @@ Etcd:
     - 127.0.0.1:2379
   Key: user.rpc
 DB:
-  DataSource: root:123456@tcp(127.0.0.1:3306)/zero-shop?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+  DataSource: root:123456@tcp(127.0.0.1:3306)/zero_shop?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 Email:
   Username: 1521505611@qq.com
-  Password:
+  Password: cxhyobbgxcclgifd
   Port: 465
   Host: smtp.qq.com
 RDB:
