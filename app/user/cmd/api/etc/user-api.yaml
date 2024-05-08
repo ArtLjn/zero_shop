@@ -1,0 +1,9 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 1004
+
+#rpc service
+UserRpcClient:
+  Endpoints:
+    - 127.0.0.1:2004
+  NonBlock: true

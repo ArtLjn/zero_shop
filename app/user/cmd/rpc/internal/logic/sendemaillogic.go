@@ -7,8 +7,8 @@ import (
 	"gopkg.in/gomail.v2"
 	"math/rand"
 	"time"
-	"zero_shop/app/user/internal/svc"
-	"zero_shop/app/user/user"
+	"zero_shop/app/user/cmd/rpc/internal/svc"
+	"zero_shop/app/user/cmd/rpc/user"
 )
 
 type SendEmailLogic struct {

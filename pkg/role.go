@@ -3,7 +3,7 @@ package pkg
 const (
 	AdminRole    = 1001 // 管理员账户
 	CustomerRole = 1002 // 顾客账户
-	BusinessRole = 1003 // 商家账户
+	SellerRole   = 1003 // 商家账户
 )
 
 func GetRoleName(role int) string {
@@ -12,8 +12,8 @@ func GetRoleName(role int) string {
 		return "admin"
 	case CustomerRole:
 		return "customer"
-	case BusinessRole:
-		return "business"
+	case SellerRole:
+		return "seller"
 	}
 	return "unknown"
 }
@@ -24,8 +24,8 @@ func GetRole(roleName string) int {
 		return AdminRole
 	case "customer":
 		return CustomerRole
-	case "business":
-		return BusinessRole
+	case "seller":
+		return SellerRole
 	}
 	return 0
 }

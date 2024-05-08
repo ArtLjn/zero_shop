@@ -26,3 +26,15 @@
        其中图片和视频自然要存放在对象存储里面，商品介绍的文本，一般都是随着商详页一起静态化，保存在HTML文件中。
 
 
+### mysql数据表设计
+1. 商品基本信息表
+```sql
+CREATE TABLE `goods` (
+     `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '图片',
+     `preface` text COMMENT '简介',
+     `price` varchar(255) DEFAULT NULL COMMENT '价格',
+     `good_id` varchar(255) DEFAULT NULL COMMENT '商品ID',
+     `id` int unsigned NOT NULL,
+     PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```

@@ -3,14 +3,16 @@ syntax = "proto3";
 package goods;
 option go_package="./goods";
 
-message Request {
-  string ping = 1;
+message CreateGoodRequest {
+  string img = 1;
+  string preface = 2;
+  string price = 3;
 }
 
-message Response {
-  string pong = 1;
+message CreateGoodResponse {
+  int64 code = 1;
+  string msg = 2;
 }
-
 service Goods {
-  rpc Ping(Request) returns(Response);
+
 }

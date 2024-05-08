@@ -2,8 +2,9 @@ package logic
 
 import (
 	"context"
-	"zero_shop/app/user/internal/svc"
-	"zero_shop/app/user/user"
+	"zero_shop/app/user/cmd/rpc/internal/svc"
+	"zero_shop/app/user/cmd/rpc/user"
+
 	"zero_shop/pkg"
 
 	"github.com/zeromicro/go-zero/core/logx"
@@ -29,7 +30,7 @@ func (l *LoginLogic) Login(in *user.LoginRequest) (*user.LoginResponse, error) {
 	if u == nil {
 		return &user.LoginResponse{Code: 400, Msg: "用户名或密码错误"}, nil
 	}
-	token, _ := pkg.Sign(in.Username)
+	token, _ := pkg.Sign(u.UserId)
 	return &user.LoginResponse{Code: 200, Msg: "success", Data: []string{
 		token,
 	}}, nil

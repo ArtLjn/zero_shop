@@ -8,7 +8,7 @@ import (
 	"github.com/zeromicro/go-zero/zrpc"
 	"zero_shop/app/order/internal/svc"
 	"zero_shop/app/order/order"
-	"zero_shop/app/user/user"
+	"zero_shop/app/user/cmd/rpc/user"
 )
 
 type PingLogic struct {

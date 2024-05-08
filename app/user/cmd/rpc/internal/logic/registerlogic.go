@@ -4,9 +4,9 @@ import (
 	"context"
 	"github.com/google/uuid"
 	"github.com/zeromicro/go-zero/core/logx"
-	"zero_shop/app/user/internal/svc"
+	"zero_shop/app/user/cmd/rpc/internal/svc"
+	"zero_shop/app/user/cmd/rpc/user"
 	"zero_shop/app/user/model"
-	"zero_shop/app/user/user"
 	"zero_shop/pkg"
 )
 

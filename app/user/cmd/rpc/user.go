@@ -3,10 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"zero_shop/app/user/internal/config"
-	"zero_shop/app/user/internal/server"
-	"zero_shop/app/user/internal/svc"
-	"zero_shop/app/user/user"
+	"zero_shop/app/user/cmd/rpc/internal/config"
+	"zero_shop/app/user/cmd/rpc/internal/server"
+	"zero_shop/app/user/cmd/rpc/internal/svc"
+	"zero_shop/app/user/cmd/rpc/user"
+
 	"zero_shop/pkg"
 
 	"github.com/zeromicro/go-zero/core/conf"
@@ -16,7 +17,7 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-var configFile = flag.String("f", pkg.UserConfigPath, "the config file")
+var configFile = flag.String("f", pkg.UserRpcConfigPath, "the config file")
 
 func main() {
 	flag.Parse()

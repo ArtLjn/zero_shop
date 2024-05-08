@@ -3,7 +3,7 @@ package svc
 import (
 	"github.com/redis/go-redis/v9"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
-	"zero_shop/app/user/internal/config"
+	"zero_shop/app/user/cmd/rpc/internal/config"
 	"zero_shop/app/user/model"
 	"zero_shop/pkg"
 )

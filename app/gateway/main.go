@@ -12,7 +12,6 @@ var configFile = flag.String("f", pkg.GateWayConfigPath, "config file")
 
 func main() {
 	flag.Parse()
-
 	var c gateway.GatewayConf
 	conf.MustLoad(*configFile, &c)
 	gw := gateway.MustNewServer(c)

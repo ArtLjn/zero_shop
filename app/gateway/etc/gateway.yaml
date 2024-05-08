@@ -19,14 +19,4 @@ Upstreams: # upstreams
       - Method: post
         Path: /api/user/login
         RpcPath: user.User/Login
-#  - Grpc:
-#      Etcd:
-#        Hosts:
-#          - 127.0.0.1:2379
-#        Key: order.rpc
-#    ProtoSets:
-#      - app/gateway/etc/proto/order.pb
-#    Mappings:
-#      - Method: post
-#        Path: /orderPing
-#        RpcPath: order.Order/Ping
+
