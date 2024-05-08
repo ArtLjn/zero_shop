@@ -2,14 +2,14 @@
 
 ## 模块划分
 
-| 子项目名 | 项目路径                          |
-|------|-------------------------------|
-| 商品服务 | [/app/goods](./app/goods)     |
-| 订单服务 | [/app/order](./app/order)     |
-| 用户服务 | [/app/user](./app/user)       |
-| 支付服务 | [/app/payment](./app/payment) |
-| 统一网关 | [/app/gateway](./app/gateway) |
-| 静态资源 | [/web](./web)                 |
+| 子项目名 | 项目路径                                |
+|------|-------------------------------------|
+| 商品服务 | [/app/goods](./app/goods/README.md) |
+| 订单服务 | [/app/order](./app/order)           |
+| 用户服务 | [/app/user](./app/user)             |
+| 支付服务 | [/app/payment](./app/payment)       |
+| 统一网关 | [/app/gateway](./app/gateway)       |
+| 静态资源 | [/web](./web)                       |
 
 ## 技术栈
 微服务
