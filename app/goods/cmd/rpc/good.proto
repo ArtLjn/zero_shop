@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package good;
+option go_package="./good";
+
+message CreateGoodRequest {
+  string img = 1;
+  string preface = 2;
+  string price = 3;
+  string seller_id = 4;
+}
+message CreateGoodResponse {
+  int64 code = 1;
+  string msg = 2;
+}
+
+service Good {
+  rpc CreateGood(CreateGoodRequest) returns (CreateGoodResponse);
+}

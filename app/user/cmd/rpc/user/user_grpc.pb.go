@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v5.26.1
-// source: api.proto
+// source: user.proto
 
 package user
 
@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	User_Login_FullMethodName     = "/user.User/Login"
-	User_Register_FullMethodName  = "/user.User/Register"
-	User_SendEmail_FullMethodName = "/user.User/SendEmail"
+	User_Login_FullMethodName      = "/user.User/Login"
+	User_Register_FullMethodName   = "/user.User/Register"
+	User_SendEmail_FullMethodName  = "/user.User/SendEmail"
+	User_GetUserMsg_FullMethodName = "/user.User/GetUserMsg"
 )
 
 // UserClient is the client API for User service.
@@ -31,6 +32,7 @@ type UserClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	SendEmail(ctx context.Context, in *SendEmailRequest, opts ...grpc.CallOption) (*SendEmailResponse, error)
+	GetUserMsg(ctx context.Context, in *GetUserMsgRequest, opts ...grpc.CallOption) (*GetUserMsgResponse, error)
 }
 
 type userClient struct {
@@ -68,6 +70,15 @@ func (c *userClient) SendEmail(ctx context.Context, in *SendEmailRequest, opts .
 	return out, nil
 }
 
+func (c *userClient) GetUserMsg(ctx context.Context, in *GetUserMsgRequest, opts ...grpc.CallOption) (*GetUserMsgResponse, error) {
+	out := new(GetUserMsgResponse)
+	err := c.cc.Invoke(ctx, User_GetUserMsg_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServer is the server API for User service.
 // All implementations must embed UnimplementedUserServer
 // for forward compatibility
@@ -75,6 +86,7 @@ type UserServer interface {
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	SendEmail(context.Context, *SendEmailRequest) (*SendEmailResponse, error)
+	GetUserMsg(context.Context, *GetUserMsgRequest) (*GetUserMsgResponse, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -90,6 +102,9 @@ func (UnimplementedUserServer) Register(context.Context, *RegisterRequest) (*Reg
 }
 func (UnimplementedUserServer) SendEmail(context.Context, *SendEmailRequest) (*SendEmailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendEmail not implemented")
+}
+func (UnimplementedUserServer) GetUserMsg(context.Context, *GetUserMsgRequest) (*GetUserMsgResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserMsg not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 
@@ -158,6 +173,24 @@ func _User_SendEmail_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _User_GetUserMsg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserMsgRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetUserMsg(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_GetUserMsg_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetUserMsg(ctx, req.(*GetUserMsgRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // User_ServiceDesc is the grpc.ServiceDesc for User service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -176,6 +209,10 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SendEmail",
 			Handler:    _User_SendEmail_Handler,
+		},
+		{
+			MethodName: "GetUserMsg",
+			Handler:    _User_GetUserMsg_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

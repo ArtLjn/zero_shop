@@ -32,9 +32,19 @@ message SendEmailResponse {
   int64 code = 1;
   string msg = 2;
 }
-
+message GetUserMsgRequest {
+  string userId = 1;
+}
+message GetUserMsgResponse {
+  string username = 1;
+  int64 role_id = 2;
+  string phone = 3;
+  string email = 4;
+  string sex = 5;
+}
 service User {
   rpc Login(LoginRequest) returns(LoginResponse);
   rpc Register(RegisterRequest) returns(RegisterResponse);
   rpc SendEmail(SendEmailRequest) returns(SendEmailResponse);
+  rpc GetUserMsg(GetUserMsgRequest) returns(GetUserMsgResponse);
 }

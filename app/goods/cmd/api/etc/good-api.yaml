@@ -1,8 +1,13 @@
-Name: user-api
+Name: good-api
 Host: 0.0.0.0
-Port: 1004
+Port: 1005
 
 #rpc service
+GoodRpcClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: good.rpc
 UserRpcClient:
   Etcd:
     Hosts:

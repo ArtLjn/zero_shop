@@ -29,3 +29,15 @@ func GetRole(roleName string) int {
 	}
 	return 0
 }
+
+func IsAdmin(roleId int) bool {
+	return roleId == AdminRole
+}
+
+func IsCustomer(roleId int) bool {
+	return roleId == CustomerRole
+}
+
+func IsSeller(roleId int) bool {
+	return roleId == SellerRole
+}

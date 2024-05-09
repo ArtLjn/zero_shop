@@ -34,11 +34,12 @@ type (
 	}
 
 	Goods struct {
-		Img     sql.NullString `db:"img"`     // 图片
-		Preface sql.NullString `db:"preface"` // 简介
-		Price   sql.NullString `db:"price"`   // 价格
-		GoodId  sql.NullString `db:"good_id"` // 商品ID
-		Id      int64          `db:"id"`
+		Img      string `db:"img"`                        // 图片
+		Preface  string `db:"preface"`                    // 简介
+		Price    string `db:"price"`                      // 价格
+		GoodId   string `db:"good_id"`                    // 商品ID
+		Id       int64  `db:"id"`                         // 自增ID
+		SellerId string `db:"seller_id" json:"seller_id"` // 商家ID
 	}
 )
 
@@ -70,14 +71,14 @@ func (m *defaultGoodsModel) FindOne(ctx context.Context, id int64) (*Goods, erro
 }
 
 func (m *defaultGoodsModel) Insert(ctx context.Context, data *Goods) (sql.Result, error) {
-	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?)", m.table, goodsRowsExpectAutoSet)
-	ret, err := m.conn.ExecCtx(ctx, query, data.Img, data.Preface, data.Price, data.GoodId, data.Id)
+	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?)", m.table, goodsRowsExpectAutoSet)
+	ret, err := m.conn.ExecCtx(ctx, query, data.Img, data.Preface, data.Price, data.GoodId, data.Id, data.SellerId)
 	return ret, err
 }
 
 func (m *defaultGoodsModel) Update(ctx context.Context, data *Goods) error {
 	query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, goodsRowsWithPlaceHolder)
-	_, err := m.conn.ExecCtx(ctx, query, data.Img, data.Preface, data.Price, data.GoodId, data.Id)
+	_, err := m.conn.ExecCtx(ctx, query, data.Img, data.Preface, data.Price, data.GoodId, data.SellerId, data.Id)
 	return err
 }
 
