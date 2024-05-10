@@ -15,9 +15,13 @@ import (
 type (
 	CreateGoodRequest  = good.CreateGoodRequest
 	CreateGoodResponse = good.CreateGoodResponse
+	FindGoodRequest    = good.FindGoodRequest
+	FindGoodResponse   = good.FindGoodResponse
+	GoodData           = good.GoodData
 
 	Good interface {
 		CreateGood(ctx context.Context, in *CreateGoodRequest, opts ...grpc.CallOption) (*CreateGoodResponse, error)
+		FindGoodPage(ctx context.Context, in *FindGoodRequest, opts ...grpc.CallOption) (*FindGoodResponse, error)
 	}
 
 	defaultGood struct {
@@ -34,4 +38,9 @@ func NewGood(cli zrpc.Client) Good {
 func (m *defaultGood) CreateGood(ctx context.Context, in *CreateGoodRequest, opts ...grpc.CallOption) (*CreateGoodResponse, error) {
 	client := good.NewGoodClient(m.cli.Conn())
 	return client.CreateGood(ctx, in, opts...)
+}
+
+func (m *defaultGood) FindGoodPage(ctx context.Context, in *FindGoodRequest, opts ...grpc.CallOption) (*FindGoodResponse, error) {
+	client := good.NewGoodClient(m.cli.Conn())
+	return client.FindGoodPage(ctx, in, opts...)
 }

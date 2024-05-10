@@ -7,4 +7,9 @@ type Config struct {
 	DB struct {
 		DataSource string
 	}
+	RDB struct {
+		Addr     string
+		DB       int
+		Password string
+	}
 }

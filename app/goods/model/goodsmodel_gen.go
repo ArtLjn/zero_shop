@@ -26,6 +26,7 @@ type (
 		FindOne(ctx context.Context, id int64) (*Goods, error)
 		Update(ctx context.Context, data *Goods) error
 		Delete(ctx context.Context, id int64) error
+		FindGoodPage(ctx context.Context, page, pageSize int64) ([]*Goods, error)
 	}
 
 	defaultGoodsModel struct {
@@ -80,6 +81,13 @@ func (m *defaultGoodsModel) Update(ctx context.Context, data *Goods) error {
 	query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, goodsRowsWithPlaceHolder)
 	_, err := m.conn.ExecCtx(ctx, query, data.Img, data.Preface, data.Price, data.GoodId, data.SellerId, data.Id)
 	return err
+}
+
+func (m *defaultGoodsModel) FindGoodPage(ctx context.Context, page, pageSize int64) ([]*Goods, error) {
+	query := fmt.Sprintf("select %s from %s limit ?,?", goodsRows, m.table)
+	var resp []*Goods
+	err := m.conn.QueryRowsCtx(ctx, &resp, query, page, pageSize)
+	return resp, err
 }
 
 func (m *defaultGoodsModel) tableName() string {

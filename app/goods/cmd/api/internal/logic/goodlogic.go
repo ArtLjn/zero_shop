@@ -33,3 +33,7 @@ func (g *GoodLogic) CreateGood(req *types.CreateGoodRequest, sellerId string) (*
 	}
 	return resp, nil
 }
+
+func (g *GoodLogic) FindGoodPage(req *good.FindGoodRequest) (*good.FindGoodResponse, error) {
+	return g.svcCtx.GoodRpc.FindGoodPage(g.ctx, req)
+}

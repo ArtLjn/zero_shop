@@ -24,6 +24,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				),
 				),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/api/goods/getGoods",
+				Handler: FindGoodHandler(serverCtx),
+			},
 		},
 	)
 }

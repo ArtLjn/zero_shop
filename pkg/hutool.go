@@ -9,6 +9,7 @@ import (
 type HuToolUtils interface {
 	CopyProperties(itemOne interface{}, itemTwo interface{})
 	IsEmpty(interface{}, interface{}) bool
+	ParseList(strList string, newList interface{})
 }
 
 type BeanUtils struct{}
@@ -32,4 +33,12 @@ func (b *BeanUtils) CopyProperties(itemOne interface{}, itemTwo interface{}) {
 
 func (b *BeanUtils) IsEmpty(itemOne interface{}, itemTwo interface{}) bool {
 	return reflect.DeepEqual(itemOne, itemTwo)
+}
+
+func (b *BeanUtils) ParseList(strList string, newList interface{}) {
+	err := json.Unmarshal([]byte(strList), &newList)
+	if err != nil {
+		fmt.Printf("json unmarshal error:%v", err)
+		return
+	}
 }

@@ -3,6 +3,13 @@ syntax = "proto3";
 package good;
 option go_package="./good";
 
+message GoodData {
+  string good_id = 1;
+  string preface = 2;
+  string img = 3;
+  string price = 4;
+}
+
 message CreateGoodRequest {
   string img = 1;
   string preface = 2;
@@ -14,6 +21,18 @@ message CreateGoodResponse {
   string msg = 2;
 }
 
+// 商品的分页加载
+message FindGoodRequest {
+  int64 page = 1;
+  int64 size = 2;
+}
+message FindGoodResponse {
+  int64 code = 1;
+  string msg = 2;
+  repeated GoodData data = 3;
+}
+
 service Good {
   rpc CreateGood(CreateGoodRequest) returns (CreateGoodResponse);
+  rpc FindGoodPage(FindGoodRequest) returns(FindGoodResponse);
 }
