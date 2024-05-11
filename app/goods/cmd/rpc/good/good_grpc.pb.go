@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Good_CreateGood_FullMethodName   = "/good.Good/CreateGood"
-	Good_FindGoodPage_FullMethodName = "/good.Good/FindGoodPage"
+	Good_CreateGood_FullMethodName        = "/good.Good/CreateGood"
+	Good_FindGoodPage_FullMethodName      = "/good.Good/FindGoodPage"
+	Good_CreateGoodDetails_FullMethodName = "/good.Good/CreateGoodDetails"
 )
 
 // GoodClient is the client API for Good service.
@@ -29,6 +30,7 @@ const (
 type GoodClient interface {
 	CreateGood(ctx context.Context, in *CreateGoodRequest, opts ...grpc.CallOption) (*CreateGoodResponse, error)
 	FindGoodPage(ctx context.Context, in *FindGoodRequest, opts ...grpc.CallOption) (*FindGoodResponse, error)
+	CreateGoodDetails(ctx context.Context, in *CreateGoodDetailsRequest, opts ...grpc.CallOption) (*CreateGoodDetailsResponse, error)
 }
 
 type goodClient struct {
@@ -57,12 +59,22 @@ func (c *goodClient) FindGoodPage(ctx context.Context, in *FindGoodRequest, opts
 	return out, nil
 }
 
+func (c *goodClient) CreateGoodDetails(ctx context.Context, in *CreateGoodDetailsRequest, opts ...grpc.CallOption) (*CreateGoodDetailsResponse, error) {
+	out := new(CreateGoodDetailsResponse)
+	err := c.cc.Invoke(ctx, Good_CreateGoodDetails_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GoodServer is the server API for Good service.
 // All implementations must embed UnimplementedGoodServer
 // for forward compatibility
 type GoodServer interface {
 	CreateGood(context.Context, *CreateGoodRequest) (*CreateGoodResponse, error)
 	FindGoodPage(context.Context, *FindGoodRequest) (*FindGoodResponse, error)
+	CreateGoodDetails(context.Context, *CreateGoodDetailsRequest) (*CreateGoodDetailsResponse, error)
 	mustEmbedUnimplementedGoodServer()
 }
 
@@ -75,6 +87,9 @@ func (UnimplementedGoodServer) CreateGood(context.Context, *CreateGoodRequest) (
 }
 func (UnimplementedGoodServer) FindGoodPage(context.Context, *FindGoodRequest) (*FindGoodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindGoodPage not implemented")
+}
+func (UnimplementedGoodServer) CreateGoodDetails(context.Context, *CreateGoodDetailsRequest) (*CreateGoodDetailsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateGoodDetails not implemented")
 }
 func (UnimplementedGoodServer) mustEmbedUnimplementedGoodServer() {}
 
@@ -125,6 +140,24 @@ func _Good_FindGoodPage_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Good_CreateGoodDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateGoodDetailsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoodServer).CreateGoodDetails(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Good_CreateGoodDetails_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoodServer).CreateGoodDetails(ctx, req.(*CreateGoodDetailsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Good_ServiceDesc is the grpc.ServiceDesc for Good service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -139,6 +172,10 @@ var Good_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FindGoodPage",
 			Handler:    _Good_FindGoodPage_Handler,
+		},
+		{
+			MethodName: "CreateGoodDetails",
+			Handler:    _Good_CreateGoodDetails_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

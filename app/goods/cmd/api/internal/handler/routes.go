@@ -29,6 +29,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/goods/getGoods",
 				Handler: FindGoodHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/goods/createGoodDetails",
+				Handler: CreateGoodDetailsHandler(serverCtx),
+			},
 		},
 	)
 }

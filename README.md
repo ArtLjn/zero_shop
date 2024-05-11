@@ -19,6 +19,7 @@
 - mysql
 - jwt
 - etcd
+- ElasticSearch
 
 区块链
 - [fisco-bcos联盟链平台](https://fisco-bcos-documentation.readthedocs.io/zh-cn/latest/index.html)

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package good;
 option go_package="./good";
+import "google/protobuf/any.proto";
 
 message GoodData {
   string good_id = 1;
@@ -32,7 +33,19 @@ message FindGoodResponse {
   repeated GoodData data = 3;
 }
 
+// TODO mongo 如何传入任意字段类型
+// 存储商品详情信息
+message CreateGoodDetailsRequest {
+  string data = 1;
+}
+
+message CreateGoodDetailsResponse {
+  int64 code = 1;
+  string msg = 2;
+}
+
 service Good {
   rpc CreateGood(CreateGoodRequest) returns (CreateGoodResponse);
   rpc FindGoodPage(FindGoodRequest) returns(FindGoodResponse);
+  rpc CreateGoodDetails(CreateGoodDetailsRequest) returns(CreateGoodDetailsResponse);
 }

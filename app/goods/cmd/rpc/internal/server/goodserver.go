@@ -31,3 +31,8 @@ func (s *GoodServer) FindGoodPage(ctx context.Context, in *good.FindGoodRequest)
 	l := logic.NewFindGoodPageLogic(ctx, s.svcCtx)
 	return l.FindGoodPage(in)
 }
+
+func (s *GoodServer) CreateGoodDetails(ctx context.Context, in *good.CreateGoodDetailsRequest) (*good.CreateGoodDetailsResponse, error) {
+	l := logic.NewCreateGoodDetailsLogic(ctx, s.svcCtx)
+	return l.CreateGoodDetails(in)
+}

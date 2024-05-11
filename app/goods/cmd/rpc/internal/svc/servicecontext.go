@@ -1,8 +1,10 @@
 package svc
 
 import (
-	"github.com/redis/go-redis/v9"
+	"github.com/zeromicro/go-zero/core/stores/cache"
+	"github.com/zeromicro/go-zero/core/stores/redis"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
+	model2 "zero_shop/app/goods/cache"
 	"zero_shop/app/goods/cmd/rpc/internal/config"
 	"zero_shop/app/goods/model"
 	"zero_shop/pkg"
@@ -12,7 +14,8 @@ type ServiceContext struct {
 	Config config.Config
 	Tool   pkg.HuToolUtils
 	Gc     model.GoodsModel
-	Rdb    *redis.Client
+	Rdb    *redis.Redis
+	Mongo  model2.GoodsDetailsModel
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -20,16 +23,12 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		Config: c,
 		Tool:   pkg.NewBeanUtils(),
 		Gc:     model.NewGoodsModel(sqlx.NewMysql(c.DB.DataSource)),
-		Rdb:    NewRDB(c),
+		Rdb:    redis.MustNewRedis(c.RDB),
+		Mongo: model2.NewGoodsDetailsModel("mongodb://localhost:27017", "user", "list01", cache.CacheConf{
+			cache.NodeConf{
+				RedisConf: c.RDB,
+				Weight:    100,
+			},
+		}),
 	}
-}
-
-func NewRDB(c config.Config) *redis.Client {
-	return redis.NewClient(
-		&redis.Options{
-			Addr:     c.RDB.Addr,
-			DB:       c.RDB.DB,
-			Password: c.RDB.Password,
-		},
-	)
 }

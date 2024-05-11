@@ -34,7 +34,7 @@ func (l *FindGoodPageLogic) FindGoodPage(in *good.FindGoodRequest) (*good.FindGo
 
 	// TODO 思考：如果查询每页数量与实际缓存页码中数量不一致问题
 	// 进行redis数据查询
-	goodCache, err := l.svcCtx.Rdb.HGet(l.ctx, pkg.GoodsKey, strconv.Itoa(int(in.Page))).Result()
+	goodCache, err := l.svcCtx.Rdb.Hget(pkg.GoodsKey, strconv.Itoa(int(in.Page)))
 	if err != nil && !errors.Is(err, redis.Nil) {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func (l *FindGoodPageLogic) FindGoodPage(in *good.FindGoodRequest) (*good.FindGo
 		go func() {
 			if len(data) != 0 {
 				by, _ := json.Marshal(&data)
-				_, ex := l.svcCtx.Rdb.HSet(context.Background(), pkg.GoodsKey, in.Page, string(by)).Result()
+				ex := l.svcCtx.Rdb.Hset(pkg.GoodsKey, strconv.Itoa(int(in.Page)), string(by))
 				if ex != nil {
 					logx.Error(ex)
 				}
