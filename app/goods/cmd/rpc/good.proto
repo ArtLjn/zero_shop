@@ -33,10 +33,10 @@ message FindGoodResponse {
   repeated GoodData data = 3;
 }
 
-// TODO mongo 如何传入任意字段类型
 // 存储商品详情信息
 message CreateGoodDetailsRequest {
-  string data = 1;
+  string goodId = 1;
+  string data = 2;
 }
 
 message CreateGoodDetailsResponse {
@@ -44,8 +44,18 @@ message CreateGoodDetailsResponse {
   string msg = 2;
 }
 
+message GetGoodDetailsRequest {
+  string goodId = 1;
+}
+message GetGoodDetailsResponse {
+  int64 code = 1;
+  string msg = 2;
+  string data = 3;
+}
+
 service Good {
   rpc CreateGood(CreateGoodRequest) returns (CreateGoodResponse);
   rpc FindGoodPage(FindGoodRequest) returns(FindGoodResponse);
   rpc CreateGoodDetails(CreateGoodDetailsRequest) returns(CreateGoodDetailsResponse);
+  rpc GetGoodDetails(GetGoodDetailsRequest) returns(GetGoodDetailsResponse);
 }

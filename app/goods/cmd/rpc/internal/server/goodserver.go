@@ -36,3 +36,8 @@ func (s *GoodServer) CreateGoodDetails(ctx context.Context, in *good.CreateGoodD
 	l := logic.NewCreateGoodDetailsLogic(ctx, s.svcCtx)
 	return l.CreateGoodDetails(in)
 }
+
+func (s *GoodServer) GetGoodDetails(ctx context.Context, in *good.GetGoodDetailsRequest) (*good.GetGoodDetailsResponse, error) {
+	l := logic.NewGetGoodDetailsLogic(ctx, s.svcCtx)
+	return l.GetGoodDetails(in)
+}

@@ -10,5 +10,10 @@ type Config struct {
 	DB struct {
 		DataSource string
 	}
-	RDB redis.RedisConf
+	RDB     redis.RedisConf
+	MongoDB struct {
+		Url        string
+		Db         string
+		Collection string
+	}
 }

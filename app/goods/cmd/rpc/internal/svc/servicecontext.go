@@ -24,7 +24,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		Tool:   pkg.NewBeanUtils(),
 		Gc:     model.NewGoodsModel(sqlx.NewMysql(c.DB.DataSource)),
 		Rdb:    redis.MustNewRedis(c.RDB),
-		Mongo: model2.NewGoodsDetailsModel("mongodb://localhost:27017", "user", "list01", cache.CacheConf{
+		Mongo: model2.NewGoodsDetailsModel(c.MongoDB.Url, c.MongoDB.Db, c.MongoDB.Collection, cache.CacheConf{
 			cache.NodeConf{
 				RedisConf: c.RDB,
 				Weight:    100,

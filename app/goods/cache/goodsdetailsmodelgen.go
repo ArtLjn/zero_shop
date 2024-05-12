@@ -18,6 +18,7 @@ type goodsDetailsModel interface {
 	FindOne(ctx context.Context, id string) (*GoodsDetails, error)
 	Update(ctx context.Context, data *GoodsDetails) (*mongo.UpdateResult, error)
 	Delete(ctx context.Context, id string) (int64, error)
+	FindOneGoodDeatilsByCond(ctx context.Context, cond bson.M) (*GoodsDetails, error)
 }
 
 type defaultGoodsDetailsModel struct {
@@ -74,4 +75,17 @@ func (m *defaultGoodsDetailsModel) Delete(ctx context.Context, id string) (int64
 	key := prefixGoodsDetailsCacheKey + id
 	res, err := m.conn.DeleteOne(ctx, key, bson.M{"_id": oid})
 	return res, err
+}
+
+func (m *defaultGoodsDetailsModel) FindOneGoodDeatilsByCond(ctx context.Context, cond bson.M) (*GoodsDetails, error) {
+	var data GoodsDetails
+	err := m.conn.FindOne(ctx, prefixGoodsDetailsCacheKey, &data, cond)
+	switch err {
+	case nil:
+		return &data, nil
+	case monc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
 }

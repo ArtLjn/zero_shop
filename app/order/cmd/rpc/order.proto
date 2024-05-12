@@ -11,13 +11,6 @@ message Response {
   string pong = 1;
 }
 
-message CreateOrderRequest {
-
-}
-message CreateOrderResponse {
-
-}
-
 service Order {
   rpc Ping(Request) returns(Response);
 }

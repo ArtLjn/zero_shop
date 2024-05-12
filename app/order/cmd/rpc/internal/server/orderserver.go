@@ -5,9 +5,10 @@ package server
 
 import (
 	"context"
-	"zero_shop/app/order/internal/logic"
-	"zero_shop/app/order/internal/svc"
-	"zero_shop/app/order/order"
+
+	"zero_shop/app/order/cmd/rpc/internal/logic"
+	"zero_shop/app/order/cmd/rpc/internal/svc"
+	"zero_shop/app/order/cmd/rpc/order"
 )
 
 type OrderServer struct {

@@ -11,3 +11,7 @@ RDB:
   Type: "node"
   Pass:
   Tls: false
+MongoDB:
+  Url: "mongodb://localhost:27017"
+  Db: "goods"
+  Collection: "details"

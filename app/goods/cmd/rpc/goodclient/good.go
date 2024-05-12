@@ -19,12 +19,15 @@ type (
 	CreateGoodResponse        = good.CreateGoodResponse
 	FindGoodRequest           = good.FindGoodRequest
 	FindGoodResponse          = good.FindGoodResponse
+	GetGoodDetailsRequest     = good.GetGoodDetailsRequest
+	GetGoodDetailsResponse    = good.GetGoodDetailsResponse
 	GoodData                  = good.GoodData
 
 	Good interface {
 		CreateGood(ctx context.Context, in *CreateGoodRequest, opts ...grpc.CallOption) (*CreateGoodResponse, error)
 		FindGoodPage(ctx context.Context, in *FindGoodRequest, opts ...grpc.CallOption) (*FindGoodResponse, error)
 		CreateGoodDetails(ctx context.Context, in *CreateGoodDetailsRequest, opts ...grpc.CallOption) (*CreateGoodDetailsResponse, error)
+		GetGoodDetails(ctx context.Context, in *GetGoodDetailsRequest, opts ...grpc.CallOption) (*GetGoodDetailsResponse, error)
 	}
 
 	defaultGood struct {
@@ -51,4 +54,9 @@ func (m *defaultGood) FindGoodPage(ctx context.Context, in *FindGoodRequest, opt
 func (m *defaultGood) CreateGoodDetails(ctx context.Context, in *CreateGoodDetailsRequest, opts ...grpc.CallOption) (*CreateGoodDetailsResponse, error) {
 	client := good.NewGoodClient(m.cli.Conn())
 	return client.CreateGoodDetails(ctx, in, opts...)
+}
+
+func (m *defaultGood) GetGoodDetails(ctx context.Context, in *GetGoodDetailsRequest, opts ...grpc.CallOption) (*GetGoodDetailsResponse, error) {
+	client := good.NewGoodClient(m.cli.Conn())
+	return client.GetGoodDetails(ctx, in, opts...)
 }

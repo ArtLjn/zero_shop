@@ -5,7 +5,8 @@ package orderclient
 
 import (
 	"context"
-	"zero_shop/app/order/order"
+
+	"zero_shop/app/order/cmd/rpc/order"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"

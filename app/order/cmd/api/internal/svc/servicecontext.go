@@ -1,6 +1,8 @@
 package svc
 
-import "zero_shop/app/order/internal/config"
+import (
+	"zero_shop/app/order/cmd/api/internal/config"
+)
 
 type ServiceContext struct {
 	Config config.Config
